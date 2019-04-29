@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col text-left">
-    <h2>Your inbox.</h2>
+    <h2>Your outbox.</h2>
     <br>
   </div>
   <div class="col text-right">
@@ -15,10 +15,9 @@
 <table class="table table-striped">
   <thead class="thead-purple">
     <th class="text-center" style="width: 50px"></th>
-    <th style="width: 150px">From</th>
-    <th style="width: 200px">Date Received</th>
+    <th style="width: 150px">To</th>
+    <th style="width: 200px">Date Sent</th>
     <th>Message</th>
-    <th class="text-center">Trash</th>
   </thead>
 
   {{# each entries}}
@@ -28,19 +27,13 @@
           <i class="fas fa-ellipsis-v"></i>
         </div>
       </td>
-      <td>{{this.sentfrom}}</td>
+      <td>{{this.sendto}}</td>
       <td>{{this.timestamp}}</td>
       <td>{{this.messagecontent}}</td>
-      <td class="text-center">
-        <form action="/usercontent/entries/delete/process" method="post">
-            <input readonly style="display: none" type="text" id="ID" name="ID" value="{{this.ID}}">
-            <button class="btn text-purple" type="submit"><i class="far fa-trash-alt fa-lg"></i></button>
-        </form>
-      </td>
     </tr>
 
   {{else}}
-    <div>It doesn't appear that you have received any messages yet.</div>
+    <div>It doesn't appear that you have sent any messages yet.</div>
     <br>
 
   {{/each}}

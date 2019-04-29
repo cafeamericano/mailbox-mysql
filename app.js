@@ -146,10 +146,9 @@ console.log("Connected to MySQL!");
 //User content routes__________________________________________________________________________________________________
 
     //Render the page listing all entries made by the user
-    
     app.get('/usercontent/entries/show', function(req, res) {
         let cookiedUsername = req.cookies['username']
-        var sql = `SELECT * FROM messagepool WHERE sendto = "${cookiedUsername}" ORDER BY timestamp DESC;`
+        var sql = `SELECT * FROM messagepool WHERE sendto = "${cookiedUsername}" AND inTrash = 0 ORDER BY timestamp DESC;`
         connection.query(sql, function (err, results, fields) {
             res.render('_userContent/showEntries', {
                 entries: results
@@ -165,23 +164,55 @@ console.log("Connected to MySQL!");
         });
     });
 
+    //Show sent messages
+    app.get('/usercontent/entries/show/sent', function(req, res) {
+        let cookiedUsername = req.cookies['username']
+        var sql = `SELECT * FROM messagepool WHERE sentfrom = "${cookiedUsername}" ORDER BY timestamp DESC;`
+        connection.query(sql, function (err, results, fields) {
+            res.render('_userContent/showSentMessages', {
+                entries: results
+            });
+        });
+    });
+
     //Add an entry for the logged in user
     app.post('/usercontent/entries/add/process', function(req, res) {
         let timestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
-        var sql = `INSERT INTO messagepool (timestamp, sendto, sentfrom, messagecontent) VALUES ("${timestamp}", "${req.body.sendto}", "${req.body.sentfrom}", "${req.body.messagecontent}");`
+        var sql = `INSERT INTO messagepool (timestamp, sendto, sentfrom, messagecontent, inTrash) VALUES ("${timestamp}", "${req.body.sendto}", "${req.body.sentfrom}", "${req.body.messagecontent}", 0);`
         console.log(sql)
         connection.query(sql, function (err, result) {
         })
         res.render('_userContent/messageSentSuccess')
     });
-                        
-    //Process entry deletion request
+
+    //Process send-to-trash request
     app.post('/usercontent/entries/delete/process', function(req, res) {
-        var sql = `DELETE FROM messagepool WHERE ID = '${req.body.ID}';`
+        var sql = `UPDATE messagepool SET inTrash = 1 WHERE ID = '${req.body.ID}';`
         console.log(sql)
         connection.query(sql, function (err) {
             if (err) throw err;
             res.redirect('/usercontent/entries/show')
+        });
+    });
+
+    //Show deleted messages
+    app.get('/usercontent/entries/show/deleted', function(req, res) {
+        let cookiedUsername = req.cookies['username']
+        var sql = `SELECT * FROM messagepool WHERE sendto = "${cookiedUsername}" AND inTrash = 1 ORDER BY timestamp DESC;`
+        connection.query(sql, function (err, results, fields) {
+            res.render('_userContent/showDeletedMessages', {
+                entries: results
+            });
+        });
+    });
+
+    //Process permanent deletion request
+    app.post('/usercontent/entries/deletepermanently/process', function(req, res) {
+        var sql = `DELETE FROM messagepool WHERE ID = '${req.body.ID}';`
+        console.log(sql)
+        connection.query(sql, function (err) {
+            if (err) throw err;
+            res.redirect('/usercontent/entries/show/deleted')
         });
     });
     
@@ -201,6 +232,6 @@ console.log("Connected to MySQL!");
 
 });
 
-app.listen(5000, function(){
-    console.log('Server listening on Port 5000...')
+app.listen(1000, function(){
+    console.log('Server listening on Port 1000...')
 })
