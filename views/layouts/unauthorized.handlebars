@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 
 <html>
 
@@ -11,23 +11,23 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="shortcut icon" type="image/png" href="../../public/images/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <link rel="stylesheet" href="/customstyles.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <title>Mailfriend</title>
     </head>
 
     <body>
     
-    <!--Header-->
-
-    {{>restrictedHeader}}
-
-    <br/>
-
-    <!--Body-->
-    <div class="container">
-        {{{body}}}
-    </div>
+        <div class="row full-height">
+            <!--Header-->
+            <div class="col-2">
+                {{>restrictedHeader}}
+            </div>
+            <!--Body-->
+            <div class="ml-5 col-9">
+                <div class="container mt-5">{{{body}}}</div>
+            </div>
+        </div>
 
     </body>
 
