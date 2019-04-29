@@ -37,6 +37,10 @@ html, body {
     border-radius: 100%
 }
 
+.soft-edge {
+    border-radius: 15px
+}
+
 .vertical-text-asc {
     transform: rotate(270deg);
 }
