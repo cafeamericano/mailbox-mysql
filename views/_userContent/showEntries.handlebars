@@ -1,0 +1,50 @@
+<!-- Generate Cards for Each Record -->
+
+<div class="row">
+  <div class="col text-left">
+    <h2>Your mailbox.</h2>
+    <br>
+  </div>
+  <div class="col text-right">
+    <a href="/usercontent/entries/add/prompt"><button class="btn btn-purple">Compose New Message<i class="far fa-paper-plane ml-3"></i></button></a>
+  </div>
+</div>
+
+<!--Only show this if no records exist for the user's account-->
+
+<table class="table table-striped">
+  <thead class="thead-purple">
+    <th class="text-center" style="width: 50px"></th>
+    <th style="width: 150px">From</th>
+    <th style="width: 200px">Date Received</th>
+    <th>Message</th>
+    <th class="text-center">Open</th>
+  </thead>
+
+  {{# each entries}}
+    <tr>
+      <td class="text-center">
+        <div class="btn text-purple">
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </td>
+      <td>{{this.sentfrom}}</td>
+      <td>{{this.timestamp}}</td>
+      <td>{{this.messagecontent}}</td>
+      <td class="text-center">
+        <form action="/usercontent/entries/delete/process" method="post">
+            <input readonly style="display: none" type="text" id="ID" name="ID" value="{{this.ID}}">
+            <button class="btn text-purple" type="submit"><i class="far fa-trash-alt fa-lg"></i></button>
+        </form>
+      </td>
+    </tr>
+
+  {{else}}
+    <div>It doesn't appear that you have received any messages yet.</div>
+    <br>
+
+  {{/each}}
+
+</table>
+
+<br>

@@ -1,0 +1,85 @@
+<!-- Generate Cards for Each Record -->
+<div>
+
+<form action="/account/create/process" method="post">
+
+    <h3>Create a new account.</h3>
+
+    <br>
+
+    <div class="row">
+
+        <div class="col">
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" placeholder="Username" class="form-control" id="username" name="username" autocomplete="new-password">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Email address" class="form-control" id="email" name="email" autocomplete="new-password">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Password" class="form-control" id="password" name="password" autocomplete="new-password">
+            </div>
+
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="First name" class="form-control" id="firstname" name="firstname">
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Last name" class="form-control" id="lastname" name="lastname">
+            </div>
+
+            <div class="form-group">
+                <label>Profile Photo Link</label>
+                <input type="text" placeholder="Profile photo link/URL" class="form-control" id="profilephotolink" name="profilephotolink">
+            </div>
+
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" placeholder="City" class="form-control" id="city" name="city">
+            </div>
+
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" placeholder="State" class="form-control" id="state" name="state">
+            </div>
+
+            <div class="form-group">
+                <label>Zip</label>
+                <input type="text" placeholder="Zip code" class="form-control" id="zip" name="zip">
+            </div>
+
+            <div class="form-group">
+                <label>Country</label>
+                <input type="text" placeholder="Country" class="form-control" id="country" name="country">
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col text-right ">
+            <a href="/login/prompt"><div class="btn btn-purple ml-2">Cancel</div></a>
+            <button type="submit" class="btn btn-purple ml-2">Create Account</button>
+        </div>
+    </div>
+
+</form>
+
+</div>
+
+<br>
+<br>

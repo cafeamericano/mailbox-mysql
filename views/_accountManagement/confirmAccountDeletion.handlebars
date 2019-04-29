@@ -1,0 +1,19 @@
+<div class="text-center">
+
+    <div>Your are about to delete the account for:</div>
+    <br>
+    <div style="font-size: 24px; font-weight: bold">{{accountToBeDeleted}}</div>
+    <br>
+    <div>Your data will be permanently deleted. This action is non-reversible.</div>
+
+    <br>
+
+    <form action="/account/delete/process" method="post">
+        <div class="form-group" style="display: none">
+            <input readonly type="email" class="form-control" value={{accountToBeDeleted}} id="email" name="email">
+        </div>
+        <a class="ml-2" href="/usercontent/entries/show"><div class="btn btn-purple">Cancel</div></a>
+        <button class="ml-2 btn btn-danger">Permanently Delete My Account</button>
+    </form>
+
+</div>

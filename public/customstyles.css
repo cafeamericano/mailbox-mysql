@@ -1,0 +1,42 @@
+html, body {
+    height: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.bg-purple {
+    background-color: purple;
+}
+
+.btn-purple {
+    background-color: purple;
+    color: white;
+}
+
+.btn-outline-purple {
+    border-color: purple;
+    color: white;
+}
+
+.thead-purple {
+    background-color: purple;
+    color: white;
+}
+
+.text-purple {
+    color: purple;
+}
+
+.text-color-inherit {
+    color: inherit
+}
+
+.circle-border {
+    border-radius: 100%
+}
+
+.vertical-text-asc {
+    transform: rotate(270deg);
+}

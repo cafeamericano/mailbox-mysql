@@ -1,0 +1,44 @@
+<!-- Generate Cards for Each Record -->
+
+<div class="row">
+  <div class="col text-left">
+    <h2>Send a message.</h2>
+    <br>
+  </div>
+</div>
+
+<form action="/usercontent/entries/add/process" method="post">
+
+    <div class="row">
+      <div class="form-group col">
+          <label for="sentfrom">From:</label>
+          <input readonly type="text" class="form-control" id="sentfrom" name="sentfrom" value="{{currentUsername}}"></text>
+      </div>
+      <div class="form-group" style="margin-top: 40px">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+      <div class="form-group col">
+          <label for="sendto">To:</label>
+          <input type="text" class="form-control" id="sendto" name="sendto" placeholder="Recipient's username"></text>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="form-group col">
+          <label for="messagecontent">Message</label>
+          <textarea class="form-control" rows="5" id="messagecontent" name="messagecontent" placeholder="Enter your note here"></textarea>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col text-right ">
+            <a href="/usercontent/entries/show"><div class="btn btn-purple ml-2"><i class="fas fa-undo"></i></div></a>
+            <button type="submit" class="btn btn-purple ml-2"><i class="far fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    
+
+</form>
