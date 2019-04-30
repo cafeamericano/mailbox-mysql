@@ -1,3 +1,5 @@
+let port=process.env.PORT || 9000
+
 var express = require('express')
 var path = require('path')
 var mysql = require('mysql')
@@ -232,6 +234,6 @@ console.log("Connected to MySQL!");
 
 });
 
-app.listen(1000, function(){
-    console.log('Server listening on Port 1000...')
+app.listen(port, function(){
+    console.log(`Server listening on Port ${port}...`)
 })
