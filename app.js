@@ -8,11 +8,10 @@ var cookieParser = require('cookie-parser')
 var app = express()
 var handlebars = require('express-handlebars')
 var moment = require('moment')
-//var dbkeys = require('./dbkeys')
+var dbkeys = require('./dbkeys')
 
 //DEFINE DB================================================================
 
-/*
 var connection = mysql.createConnection({
   host: dbkeys.Xhost,
   user: dbkeys.Xuser,
@@ -20,15 +19,6 @@ var connection = mysql.createConnection({
   database: dbkeys.Xdatabase,
   dateStrings: true
 });
-*/
-
-var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "database",
-    dateStrings: true
-  });
 
 //MIDDLEWARE================================================================
 
